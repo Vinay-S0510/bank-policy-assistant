@@ -1,0 +1,74 @@
+[
+  {
+    "id": "Q001",
+    "question": "Can a bank issue a credit card without my consent?",
+    "expected_answer": "Card issuers are prohibited from issuing unsolicited credit cards and must obtain prior explicit consent from the customer.",
+    "expected_sources": ["rbi_credit_debit_cards.pdf"]
+  },
+  {
+    "id": "Q002",
+    "question": "What should I do if I receive an unsolicited credit card?",
+    "expected_answer": "Do not activate or provide activation consent. The issuer must close the account without cost within seven working days after seeking confirmation if no activation consent is received, and the customer may complain to the issuer and escalate to the RBI Ombudsman.",
+    "expected_sources": ["rbi_credit_debit_cards.pdf"]
+  },
+  {
+    "id": "Q003",
+    "question": "Can a bank charge overlimit fees without my consent?",
+    "expected_answer": "No. Overlimit use requires prior explicit consent; without that consent, neither overlimit use nor overlimit charges may be provided or levied.",
+    "expected_sources": ["rbi_credit_debit_cards.pdf"]
+  },
+  {
+    "id": "Q004",
+    "question": "Does blocking a credit card mean the account is closed?",
+    "expected_answer": "No. Blocking temporarily prevents transactions while the credit/account relationship remains. Closure terminates the account-based relationship.",
+    "expected_sources": ["rbi_credit_debit_cards.pdf"]
+  },
+  {
+    "id": "Q005",
+    "question": "How long should a card issuer take to honour a credit card closure request?",
+    "expected_answer": "The closure request has to be honoured within seven working days, subject to the stated treatment of outstanding dues.",
+    "expected_sources": ["rbi_credit_debit_cards.pdf"]
+  },
+  {
+    "id": "Q006",
+    "question": "How can a customer escalate a complaint against a card issuer?",
+    "expected_answer": "The customer should first approach the card issuer. If there is no response within 30 days, the complaint is rejected wholly or partly, or the customer is not satisfied with the response or resolution, the customer can lodge a complaint with the RBI Ombudsman.",
+    "expected_sources": ["rbi_credit_debit_cards.pdf", "rbi_ombudsman.pdf"]
+  },
+  {
+    "id": "Q007",
+    "question": "Which entities are covered by the RBI KYC Directions?",
+    "expected_answer": "The KYC Directions apply to every entity regulated by the Reserve Bank of India, except where specifically mentioned otherwise, with provisions also covering certain overseas branches and majority-owned subsidiaries subject to the stated conditions.",
+    "expected_sources": ["rbi_kyc.pdf"]
+  },
+  {
+    "id": "Q008",
+    "question": "What is the RBI Master Direction on KYC called?",
+    "expected_answer": "The Reserve Bank of India (Know Your Customer (KYC)) Directions, 2016.",
+    "expected_sources": ["rbi_kyc.pdf"]
+  },
+  {
+    "id": "Q009",
+    "question": "What is the Reserve Bank - Integrated Ombudsman Scheme, 2021?",
+    "expected_answer": "It integrates the Banking Ombudsman Scheme, the Ombudsman Scheme for Non-Banking Financial Companies, and the Ombudsman Scheme for Digital Transactions into one Reserve Bank - Integrated Ombudsman Scheme, 2021.",
+    "expected_sources": ["rbi_ombudsman.pdf"]
+  },
+  {
+    "id": "Q010",
+    "question": "When did the Reserve Bank - Integrated Ombudsman Scheme, 2021 come into force?",
+    "expected_answer": "November 12, 2021.",
+    "expected_sources": ["rbi_ombudsman.pdf"]
+  },
+  {
+    "id": "Q011",
+    "question": "What is an Officially Valid Document under the RBI KYC framework?",
+    "expected_answer": "It is a document recognized under the KYC framework for customer identification; the exact qualifying documents should be taken from the OVD definition in the RBI KYC Directions.",
+    "expected_sources": ["rbi_kyc.pdf"]
+  },
+  {
+    "id": "Q012",
+    "question": "Which bank currently offers the lowest home-loan interest rate in India?",
+    "expected_answer": "The available corpus does not provide bank-by-bank current home-loan interest-rate comparisons.",
+    "expected_sources": []
+  }
+]
