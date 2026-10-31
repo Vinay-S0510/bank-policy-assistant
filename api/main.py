@@ -3,23 +3,23 @@ from pathlib import Path
 
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import FileResponse
 from pydantic import BaseModel, Field
 
-from src.config import CHROMA_DIR
-from src.ingest import build_vectorstore
+from src.ingest import load_policy_corpus
 from src.rag import answer_corrective
+
+
+ROOT = Path(__file__).resolve().parents[1]
+FRONTEND_INDEX = ROOT / "frontend" / "index.html"
 
 app = FastAPI(
     title="Bank Policy & Customer Compliance Assistant",
     description="RBI-document-grounded banking policy question answering.",
-    version="1.0.0",
+    version="1.1.0",
 )
 
-allowed_origins = [
-    "http://127.0.0.1:5500",
-    "http://localhost:5500",
-]
-
+allowed_origins = ["http://127.0.0.1:5500", "http://localhost:5500"]
 frontend_url = os.getenv("FRONTEND_URL")
 if frontend_url:
     allowed_origins.append(frontend_url.rstrip("/"))
@@ -34,37 +34,30 @@ app.add_middleware(
 
 
 @app.on_event("startup")
-def initialize_vectorstore():
-    collection_marker = CHROMA_DIR / "chroma.sqlite3"
-
-    if not collection_marker.exists():
-        build_vectorstore()
+def initialize_corpus() -> None:
+    app.state.corpus = load_policy_corpus()
 
 
 class Question(BaseModel):
     question: str = Field(min_length=3, max_length=1000)
 
 
-@app.get("/")
-def root():
-    return {
-        "message": "Bank Policy & Customer Compliance Assistant",
-        "docs": "/docs",
-        "health": "/health",
-    }
+@app.get("/", include_in_schema=False)
+def home() -> FileResponse:
+    return FileResponse(FRONTEND_INDEX)
 
 
 @app.get("/health")
-def health():
-    return {"status": "ok"}
+def health() -> dict:
+    return {"status": "ok", "corpus_chunks": len(app.state.corpus)}
 
 
 @app.post("/ask")
-def ask(payload: Question):
+def ask(payload: Question) -> dict:
     try:
-        return answer_corrective(payload.question)
+        return answer_corrective(payload.question, app.state.corpus)
     except Exception as exc:
         raise HTTPException(
             status_code=500,
-            detail="Unable to process the question. Check the server logs.",
+            detail="Unable to search the bundled RBI policy corpus.",
         ) from exc
